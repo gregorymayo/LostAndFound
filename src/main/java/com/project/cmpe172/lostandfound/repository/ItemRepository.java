@@ -4,8 +4,6 @@ import com.project.cmpe172.lostandfound.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 /**
  * Created by Jiawei Zhang
  * 4/1/2020
@@ -13,7 +11,6 @@ import java.util.Optional;
  */
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer> {
-
 
 
 }

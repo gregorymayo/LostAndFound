@@ -1,6 +1,8 @@
 package com.project.cmpe172.lostandfound.service.serviceImpl;
 
 import com.project.cmpe172.lostandfound.entity.Item;
+import com.project.cmpe172.lostandfound.enums.ResultEnum;
+import com.project.cmpe172.lostandfound.exception.LostFoundException;
 import com.project.cmpe172.lostandfound.repository.ItemRepository;
 import com.project.cmpe172.lostandfound.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +35,14 @@ public class ItemServiceImpl implements ItemService {
         return item;
     }
 
+
     @Override
     public Item getItem(Integer itemId) {
+        Item item = repository.findById(itemId).orElse(null);
+        if (item == null) {
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
+        }
+
         Item result = repository.getOne(itemId);
         return result;
     }
@@ -49,17 +57,18 @@ public class ItemServiceImpl implements ItemService {
     public void postDateFound(Integer itemId, Date date) {
         Item item = repository.findById(itemId).orElse(null);
         if (item == null) {
-            throw new RuntimeException("Item not found");
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
 
         item.setDateFound(date);
+        repository.save(item);
     }
 
     @Override
     public Date dateFound(Item item) {
 
         if (item.getDateFound() == null) {
-            throw new RuntimeException("Item has not been found yet");
+            throw new LostFoundException(ResultEnum.DATE_NOT_FOUND);
         }
 
         return item.getDateFound();

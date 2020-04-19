@@ -3,6 +3,8 @@ package com.project.cmpe172.lostandfound.service.serviceImpl;
 import com.project.cmpe172.lostandfound.dto.LoginDto;
 import com.project.cmpe172.lostandfound.dto.SignUpDto;
 import com.project.cmpe172.lostandfound.entity.User;
+import com.project.cmpe172.lostandfound.enums.ResultEnum;
+import com.project.cmpe172.lostandfound.exception.LostFoundException;
 import com.project.cmpe172.lostandfound.repository.UserRepository;
 import com.project.cmpe172.lostandfound.service.ApiResponse;
 import com.project.cmpe172.lostandfound.service.UserService;
@@ -34,10 +36,10 @@ public class UserServiceImpl implements UserService {
     public ApiResponse login(LoginDto loginDto) {
         User user = userRepository.findByUserEmail(loginDto.getUserEmail());
         if (user == null) {
-            throw new RuntimeException("User does not exist.");
+            throw new LostFoundException(ResultEnum.USER_NOT_FOUND);
         }
         if (!user.getPassword().equals(loginDto.getPassword())) {
-            throw new RuntimeException("Password mismatch");
+            throw new LostFoundException(ResultEnum.WRONG_PASSWORD);
         }
         return new ApiResponse(200, "Login success", null);
     }

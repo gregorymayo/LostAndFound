@@ -1,10 +1,15 @@
 package com.project.cmpe172.lostandfound.controller;
 
 import com.project.cmpe172.lostandfound.entity.Item;
+import com.project.cmpe172.lostandfound.enums.ResultEnum;
+import com.project.cmpe172.lostandfound.exception.LostFoundException;
 import com.project.cmpe172.lostandfound.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,7 +34,7 @@ public class ItemController {
         Item item = itemService.getItem(itemId);
 
         if (item == null) {
-            throw new RuntimeException("Item not found");
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
         return item;
     }
@@ -47,13 +52,40 @@ public class ItemController {
         Item item = itemService.getItem(itemId);
 
         if (item == null) {
-            throw new RuntimeException("item id not found");
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
 
 
         itemService.delete(item);
 
         return "Deleted item id -" + itemId;
+    }
+
+    @PostMapping("/item/{itemId}")
+    public String postFoundDate(@PathVariable int itemId) {
+        Item item = itemService.getItem(itemId);
+
+        if (item == null) {
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
+        }
+
+        itemService.postDateFound(itemId, new Timestamp(System.currentTimeMillis()));
+
+        return "Successfully post found date!";
+    }
+
+    @GetMapping("/item/date/{itemId}")
+    public String getFoundDate(@PathVariable int itemId) {
+        Item item = itemService.getItem(itemId);
+
+        if (item == null) {
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
+        }
+        String pattern = "yyyy-MM-dd hh:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Date date = itemService.dateFound(item);
+        String foundDate = simpleDateFormat.format(date);
+        return foundDate;
     }
 
 
