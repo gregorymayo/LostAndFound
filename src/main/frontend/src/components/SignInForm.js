@@ -19,19 +19,10 @@ const SignInForm = () => {
     	console.log(email);
     	console.log(password);
     	/*
-    	const response = await fetch(databaseURL, {
-    			method: 'POST',
-    			headers: {
-    				'Content-Type': 'application/json'
-    			},
-    			body: JSON.stringify({
-    				question: question,
-    				answers: values
-    			})
-    		});
-    		const resData = await response.json();
-    		//Outputing unique key from Firebase
-    		*/
+    	//Fetch from Firebase DB and initialize state
+        const poll = await fetch(`https://ez-poll.firebaseio.com/qna/${uniqueID}.json`);
+        const pollJSON = await poll.json();
+    	*/
     };
 
 	return (

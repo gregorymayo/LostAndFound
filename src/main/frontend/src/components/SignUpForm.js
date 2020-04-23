@@ -32,20 +32,14 @@ const SignUpForm = () => {
         console.log(email);
         console.log(password);
         console.log(admin);
-        	/*
-        	const response = await fetch(databaseURL, {
-        			method: 'POST',
-        			headers: {
-        				'Content-Type': 'application/json'
-        			},
-        			body: JSON.stringify({
-        				question: question,
-        				answers: values
-        			})
-        		});
-        		const resData = await response.json();
-        		//Outputing unique key from Firebase
-        		*/
+        /*
+        const response = await fetch(databaseURL, {
+            method: 'POST',
+        	headers: {'Content-Type': 'application/json'},
+        	body: JSON.stringify({ question: question, answers: values})
+        });
+        const resData = await response.json();
+        */
     };
 
 	return (
