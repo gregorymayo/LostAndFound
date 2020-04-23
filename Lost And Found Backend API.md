@@ -30,9 +30,7 @@ java -jar lost-and-found-0.0.1-SNAPSHOT.jar
 
 #### 
 
-#### @GetMapping("api/items")
-
----
+### @GetMapping("api/items")
 
 **This will return all items stored in database.**
 
