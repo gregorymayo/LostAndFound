@@ -4,7 +4,15 @@
 
 ### How to start backend 
 
-In project directory, go to *target* folder.
+In project directory, open terminal and run 
+
+```
+mvn install
+```
+
+When the build is finished,
+
+go to project directory, go to *target* folder.
 
 In *target* you can found a jar file name  lost-and-found-0.0.1-SNAPSHOT.jar
 
