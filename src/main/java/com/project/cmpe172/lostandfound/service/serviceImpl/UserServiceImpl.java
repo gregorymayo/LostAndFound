@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         if (!user.getPassword().equals(loginDto.getPassword())) {
             throw new LostFoundException(ResultEnum.WRONG_PASSWORD);
         }
-        return new ApiResponse(200, "Login success", null);
+        return new ApiResponse(200, "Login success", user.getUserFullname());
     }
 
 

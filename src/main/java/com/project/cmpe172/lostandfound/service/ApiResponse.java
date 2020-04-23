@@ -1,10 +1,13 @@
 package com.project.cmpe172.lostandfound.service;
 
+import lombok.Data;
+
 /**
  * Created by Jiawei Zhang
  * 4/13/2020
  * 10:36 PM
  */
+@Data
 public class ApiResponse {
 
     private int status;
@@ -20,5 +23,4 @@ public class ApiResponse {
     public int getStatus() {
         return status;
     }
-
 }

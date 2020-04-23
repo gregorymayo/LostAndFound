@@ -2,7 +2,6 @@ package com.project.cmpe172.lostandfound.service;
 
 import com.project.cmpe172.lostandfound.dto.LoginDto;
 import com.project.cmpe172.lostandfound.dto.SignUpDto;
-import com.project.cmpe172.lostandfound.entity.User;
 
 /**
  * Created by Jiawei Zhang

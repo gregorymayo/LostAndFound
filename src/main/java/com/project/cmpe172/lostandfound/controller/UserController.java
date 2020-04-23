@@ -24,6 +24,7 @@ public class UserController {
 
     @PostMapping
     public ApiResponse signUp(@RequestBody SignUpDto signUpDto) {
+        ApiResponse apiResponse = userService.signUp(signUpDto);
         return userService.signUp(signUpDto);
     }
 
@@ -31,5 +32,6 @@ public class UserController {
     public ApiResponse login(@RequestBody LoginDto loginDto) {
         return userService.login(loginDto);
     }
+
 
 }
