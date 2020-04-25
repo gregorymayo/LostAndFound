@@ -1,0 +1,14 @@
+.navbarContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbarTitle{
+    padding-left: 20px;
+}
+
+.navbarLink {
+   float: right;
+   display: flex;
+}
