@@ -197,7 +197,7 @@ Return:
 
 
 
-### @PostMapping("/login")
+### @PostMapping("/user/login")
 
 **This will return ApiResponse entity**
 
