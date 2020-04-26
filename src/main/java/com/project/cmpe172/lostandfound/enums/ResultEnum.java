@@ -12,7 +12,8 @@ public enum ResultEnum {
     ITEM_NOT_FOUND(1, "Item does not exist"),
     DATE_NOT_FOUND(2, "Item found date not found"),
     USER_NOT_FOUND(3, "User not found"),
-    WRONG_PASSWORD(4, "Wrong password");
+    WRONG_PASSWORD(4, "Wrong password"),
+    EMAIL_ALREADY_EXIST(5, "Email has already been registered");
 
 
     private Integer code;

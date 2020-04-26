@@ -5,6 +5,7 @@ import com.project.cmpe172.lostandfound.dto.SignUpDto;
 import com.project.cmpe172.lostandfound.entity.User;
 import com.project.cmpe172.lostandfound.enums.ResultEnum;
 import com.project.cmpe172.lostandfound.exception.LostFoundException;
+import com.project.cmpe172.lostandfound.repository.CustomUserRepository;
 import com.project.cmpe172.lostandfound.repository.UserRepository;
 import com.project.cmpe172.lostandfound.service.ApiResponse;
 import com.project.cmpe172.lostandfound.service.UserService;
@@ -22,10 +23,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CustomUserRepository customUserRepository;
 
     @Override
     public ApiResponse signUp(SignUpDto signUpDto) {
-        validateSignUp(signUpDto);
+        String email = signUpDto.getUserEmail();
+        if (customUserRepository.emailExist(email)) {
+            return new ApiResponse(500, "Email has already been registered", null);
+        }
+
+//        validateSignUp(signUpDto);
         User user = new User();
         BeanUtils.copyProperties(signUpDto, user);
         userRepository.save(user);
@@ -35,6 +43,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public ApiResponse login(LoginDto loginDto) {
         User user = userRepository.findByUserEmail(loginDto.getUserEmail());
+
+
         if (user == null) {
             throw new LostFoundException(ResultEnum.USER_NOT_FOUND);
         }
