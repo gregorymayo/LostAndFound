@@ -1,14 +1,22 @@
-.navbarContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.navbarContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
-.navbarTitle{
-    padding-left: 20px;
+.navbarTitle {
+	padding-left: 20px;
+	color: #b2e5ff;
 }
 
 .navbarLink {
-   float: right;
-   display: flex;
+	float: right;
+	display: flex;
+}
+.nav-color {
+	background-color: #3f5474;
+}
+
+.nav-color-text {
+	color: #b2e5ff;
 }
