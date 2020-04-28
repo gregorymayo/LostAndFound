@@ -16,14 +16,14 @@ const Home = () => {
 
                     </div>
                   <img src="https://i.ibb.co/qd1YZDV/lost-found-copy.jpg" alt="lost-found-copy" border="0" className="picturesCss"/>
-                    <h3 style={{color:"#3f5474"}}>A Place Where You Can</h3>
+                    <h3 className="title" style={{color:"#3f5474"}}>A Place Where You Can</h3>
                     <ul className="list-group" style={{color:"black"}}>
-                        <li className="list-group-item">
+                        <li className="">
                             <h5 className="text">
                                 Found Your Item
                             </h5>
                         </li>
-                        <li className="list-group-item">
+                        <li className="">
                             <h5 className="text">
                                 Post Your Lost Item
                             </h5>
