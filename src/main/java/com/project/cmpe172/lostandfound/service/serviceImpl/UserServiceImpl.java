@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
     public ApiResponse login(LoginDto loginDto) {
         User user = userRepository.findByUserEmail(loginDto.getUserEmail());
 
-
         if (user == null) {
             throw new LostFoundException(ResultEnum.USER_NOT_FOUND);
         }
