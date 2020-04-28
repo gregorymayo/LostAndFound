@@ -1,14 +1,13 @@
 package com.project.cmpe172.lostandfound.controller;
 
-import com.project.cmpe172.lostandfound.dto.LoginDto;
 import com.project.cmpe172.lostandfound.dto.SignUpDto;
+import com.project.cmpe172.lostandfound.entity.User;
 import com.project.cmpe172.lostandfound.service.ApiResponse;
 import com.project.cmpe172.lostandfound.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Jiawei Zhang
@@ -28,9 +27,9 @@ public class UserController {
         return userService.signUp(signUpDto);
     }
 
-    @PostMapping("/login")
-    public ApiResponse login(@RequestBody LoginDto loginDto) {
-        return userService.login(loginDto);
+    @GetMapping("/login")
+    public List<User> login() {
+        return userService.getAllUser();
     }
 
 

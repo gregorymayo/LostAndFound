@@ -2,6 +2,9 @@ package com.project.cmpe172.lostandfound.service;
 
 import com.project.cmpe172.lostandfound.dto.LoginDto;
 import com.project.cmpe172.lostandfound.dto.SignUpDto;
+import com.project.cmpe172.lostandfound.entity.User;
+
+import java.util.List;
 
 /**
  * Created by Jiawei Zhang
@@ -12,5 +15,7 @@ public interface UserService {
     public ApiResponse signUp(SignUpDto signUpDto);
 
     public ApiResponse login(LoginDto loginDto);
+
+    List<User> getAllUser();
 
 }

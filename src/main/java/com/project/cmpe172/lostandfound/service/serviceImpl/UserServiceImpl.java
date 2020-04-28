@@ -13,6 +13,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Jiawei Zhang
  * 4/13/2020
@@ -57,5 +59,10 @@ public class UserServiceImpl implements UserService {
 
     private void validateSignUp(SignUpDto signUpDto) {
 
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userRepository.findAll();
     }
 }
