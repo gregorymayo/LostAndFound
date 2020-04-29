@@ -1,55 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import './SignInForm.css';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
 const Home = () => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const history = useHistory();
-	const goToSignUp = () => {
+	const goToSignUp = e => {
+		e.preventDefault();
 		history.push('/sign-up');
 	};
-	const goToSignIn = () => {
+	const goToSignIn = e => {
+		e.preventDefault();
 		history.push('/');
 	};
 	const handleChangeEmail = event => {
 		event.preventDefault();
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		setEmail(event.target.value);
 	};
 	const handleChangePassword = event => {
 		event.preventDefault();
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		setPassword(event.target.value);
 	};
 	//Handling the submit button
-	const onLogin = () => {
-		//e.preventDefault();
-		console.log(email);
-		console.log(password);
-		/*
-    	//Fetch from Firebase DB and initialize state
-        const poll = await fetch(`https://ez-poll.firebaseio.com/qna/${uniqueID}.json`);
-        const pollJSON = await poll.json();
-    	*/
+	const onLogin = async e => {
+		e.preventDefault();
+		//console.log(email);
+		//console.log(password);
+
+		//Post to DB
+		const response = await fetch('http://localhost:8080/user/login', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ userEmail: email, password: password })
+		});
+		const responseData = await response.json();
+		console.log(responseData);
 	};
 	return (
 		<div>
 			<div className='AppS'>
 				<div className='AppS__Aside'>
 					<div className='PageSwitcher'>
-						<button
-							activeClassName='PageSwitcher__Item--Active'
-							className='PageSwitcher__Item '
-							onClick={goToSignUp}
-						>
+						<button className='PageSwitcher__Item ' onClick={goToSignUp}>
 							Sign Up
 						</button>
-						<button
-							activeClassName='PageSwitcher__Item--Active'
-							className='PageSwitcher__Item '
-							onClick={goToSignIn}
-						>
+						<button className='PageSwitcher__Item ' onClick={goToSignIn}>
 							Sign In
 						</button>
 					</div>

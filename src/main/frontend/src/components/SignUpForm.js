@@ -15,39 +15,46 @@ const SignUpForm = () => {
 	};
 	const handleChangeName = event => {
 		event.preventDefault();
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		setName(event.target.value);
 	};
 	const handleChangeEmail = event => {
 		event.preventDefault();
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		setEmail(event.target.value);
 	};
 	const handleChangePassword = event => {
 		event.preventDefault();
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		setPassword(event.target.value);
 	};
 	const handleChangeAdmin = event => {
 		event.preventDefault();
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		setAdmin(true);
 	};
 	//Handling the submit button
-	const createAccount = () => {
-		//e.preventDefault();
+	const createAccount = async e => {
+		e.preventDefault();
+		/*
 		console.log(name);
 		console.log(email);
 		console.log(password);
 		console.log(admin);
+		*/
+		const res = await fetch('http://localhost:8080/api/items');
+		const resData = await res.json();
+		console.log(resData);
 		/*
-        const response = await fetch(databaseURL, {
-            method: 'POST',
-        	headers: {'Content-Type': 'application/json'},
-        	body: JSON.stringify({ question: question, answers: values})
-        });
-        const resData = await response.json();
-        */
+		//Post to DB
+		const response = await fetch('/user', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ userFullname: name, password: password, userEmail: email, userIsAdmin: admin })
+		});
+		const resData = await response.json();
+		console.log(resData);
+		*/
 	};
 
 	return (
@@ -55,18 +62,10 @@ const SignUpForm = () => {
 			<div className='AppS'>
 				<div className='AppS__Aside'>
 					<div className='PageSwitcher'>
-						<button
-							activeClassName='PageSwitcher__Item--Active'
-							className='PageSwitcher__Item '
-							onClick={goToSignUp}
-						>
+						<button className='PageSwitcher__Item ' onClick={goToSignUp}>
 							Sign Up
 						</button>
-						<button
-							activeClassName='PageSwitcher__Item--Active'
-							className='PageSwitcher__Item '
-							onClick={goToSignIn}
-						>
+						<button className='PageSwitcher__Item ' onClick={goToSignIn}>
 							Sign In
 						</button>
 					</div>
