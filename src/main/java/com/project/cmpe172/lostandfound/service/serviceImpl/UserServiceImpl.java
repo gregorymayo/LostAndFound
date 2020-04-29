@@ -1,6 +1,7 @@
 package com.project.cmpe172.lostandfound.service.serviceImpl;
 
 import com.project.cmpe172.lostandfound.dto.LoginDto;
+import com.project.cmpe172.lostandfound.dto.ReturnLoginDto;
 import com.project.cmpe172.lostandfound.dto.SignUpDto;
 import com.project.cmpe172.lostandfound.entity.User;
 import com.project.cmpe172.lostandfound.enums.ResultEnum;
@@ -52,7 +53,10 @@ public class UserServiceImpl implements UserService {
         if (!user.getPassword().equals(loginDto.getPassword())) {
             throw new LostFoundException(ResultEnum.WRONG_PASSWORD);
         }
-        return new ApiResponse(200, "Login success", user.getUserFullname());
+        ReturnLoginDto returnLoginDto = new ReturnLoginDto();
+        returnLoginDto.setUserEmail(user.getUserEmail());
+        returnLoginDto.setUserIsAdmin(user.isUserIsAdmin());
+        return new ApiResponse(200, "Login success", returnLoginDto);
     }
 
 
