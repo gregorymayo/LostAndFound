@@ -1,9 +1,10 @@
 import React from 'react';
+
 const Error = () => {
-	return (
-		<div>
+    return (
+        <div>
             <p>Page Not Found</p>
-		</div>
-	);
+        </div>
+    );
 };
 export default Error;
