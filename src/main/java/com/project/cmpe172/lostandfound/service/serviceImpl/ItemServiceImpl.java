@@ -8,7 +8,6 @@ import com.project.cmpe172.lostandfound.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -54,21 +53,21 @@ public class ItemServiceImpl implements ItemService {
 
 
     @Override
-    public void postDateFound(Integer itemId, Date date) {
+    public void postDateFound(Integer itemId, String dateFound) {
         Item item = repository.findById(itemId).orElse(null);
         if (item == null) {
             throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
 
-        item.setDateFound(date);
+        item.setDateFound(dateFound);
         repository.save(item);
     }
 
     @Override
-    public Date dateFound(Item item) {
-
-        if (item.getDateFound() == null) {
-            throw new LostFoundException(ResultEnum.DATE_NOT_FOUND);
+    public String dateFound(Integer itemId) {
+        Item item = repository.findById(itemId).orElse(null);
+        if (item == null) {
+            throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
 
         return item.getDateFound();

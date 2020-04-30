@@ -2,7 +2,6 @@ package com.project.cmpe172.lostandfound.service;
 
 import com.project.cmpe172.lostandfound.entity.Item;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,10 +20,10 @@ public interface ItemService {
     List<Item> getAllItems();
 
     //post the date found of an item
-    void postDateFound(Integer itemId, Date date);
+    void postDateFound(Integer itemId, String dateFoun);
 
     //return found date for an item
-    Date dateFound(Item item);
+    String dateFound(Integer itemId);
 
 
 }

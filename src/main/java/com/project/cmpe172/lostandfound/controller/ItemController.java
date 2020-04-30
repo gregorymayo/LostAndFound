@@ -7,9 +7,6 @@ import com.project.cmpe172.lostandfound.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,15 +59,15 @@ public class ItemController {
         return "Deleted item id -" + itemId;
     }
 
-    @PostMapping("/item/{itemId}")
-    public String postFoundDate(@PathVariable int itemId) {
+    @PostMapping("/item/{itemId}/{dateFound}")
+    public String postFoundDate(@PathVariable int itemId, @PathVariable String dateFound) {
         Item item = itemService.getItem(itemId);
 
         if (item == null) {
             throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
 
-        itemService.postDateFound(itemId, new Timestamp(System.currentTimeMillis()));
+        itemService.postDateFound(itemId, dateFound);
 
         return "Successfully post found date!";
     }
@@ -84,11 +81,9 @@ public class ItemController {
         if (item == null) {
             throw new LostFoundException(ResultEnum.ITEM_NOT_FOUND);
         }
-        String pattern = "yyyy-MM-dd hh:mm:ss";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        Date date = itemService.dateFound(item);
-        String foundDate = simpleDateFormat.format(date);
-        return foundDate;
+
+        String dateFound = item.getDateFound();
+        return dateFound;
     }
 
 

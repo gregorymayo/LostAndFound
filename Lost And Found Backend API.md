@@ -135,9 +135,9 @@ Deleted item id -4
 
 
 
-### @PostMapping("/item/{itemId}")
+### @PostMapping("/item/{itemId}/{dateFound}")
 
-**This will post a found date to a specific item and return a String**
+**This will post the String dateFound to the target itemId item
 
 
 
