@@ -1,0 +1,38 @@
+.layout {
+	box-sizing: border-box;
+}
+
+.column {
+	float: left;
+	width: 25%;
+	padding-left: 64px;
+	padding-top: 49px;
+}
+
+.column-button-found {
+	float: left;
+	width: 25%;
+	padding-left: 170px;
+	padding-top: 49px;
+}
+
+.column-button-lost {
+	float: left;
+	width: 25%;
+	padding-top: 49px;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.img-lost-item {
+	max-width: 250px;
+	height: 209px;
+}
+
+.text-size {
+	font-size: 20px;
+}
