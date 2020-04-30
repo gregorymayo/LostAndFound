@@ -77,6 +77,8 @@ public class ItemController {
 
     @GetMapping("/item/date/{itemId}")
     public String getFoundDate(@PathVariable int itemId) {
+
+
         Item item = itemService.getItem(itemId);
 
         if (item == null) {
