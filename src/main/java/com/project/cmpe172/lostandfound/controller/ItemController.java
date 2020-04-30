@@ -18,7 +18,7 @@ import java.util.List;
  * 7:27 PM
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
 public class ItemController {
 
