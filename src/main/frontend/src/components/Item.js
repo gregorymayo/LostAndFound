@@ -20,17 +20,15 @@ const ItemsUser = () => {
 
 	const onSubmit = async e => {
 		e.preventDefault();
-		/*
 		console.log(itemName);
 		console.log(itemDesc);
 		console.log(itemImg);
-		*/
 
 		//Post to DB
-		const response = await fetch('/item', {
+		const response = await fetch('http://localhost:8080/api/item', {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ itemName: itemName, itemDescription: itemDesc, itemImg })
+			headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+			body: JSON.stringify({ itemName: itemName, itemDescription: itemDesc, itemImg: itemImg })
 		});
 		const responseData = await response.json();
 		console.log(responseData);
