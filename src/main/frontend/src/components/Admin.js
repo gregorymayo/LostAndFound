@@ -34,13 +34,16 @@ const Admins = () => {
 			minute: '2-digit',
 			second: '2-digit'
 		}).format(timestamp);
+		var newTimeFound = timeFound.replace('/', '-');
+		var newTimeFounds = newTimeFound.replace('/', '-');
+		//console.log(timeFound);
 		//Post to DB
-		const url = `http://localhost:8080/api/item/${itemId}`;
+		const url = `http://localhost:8080/api/item/${itemId}/${newTimeFounds}`;
 		const response = await fetch(url, {
 			method: 'POST',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
 		});
-		const resDataFound = await response.json();
+		//const resDataFound = await response.json();
 		//console.log(resDataFound);
 	};
 
@@ -50,10 +53,10 @@ const Admins = () => {
 		//Post to DB
 		const response = await fetch(`http://localhost:8080/api/item/${itemId}`, {
 			method: 'DELETE',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
 		});
-		const resData = await response.json();
-		console.log(resData);
+		//const resData = await response.json();
+		//console.log(resData);
 	};
 	return (
 		<div>

@@ -41,6 +41,8 @@ const ItemsUser = () => {
 				minute: '2-digit',
 				second: '2-digit'
 			}).format(timestamp);
+			var newTimeFound = timeLost.replace('/', '-');
+			var newTimeFounds = newTimeFound.replace('/', '-');
 			//Post to DB
 			const response = await fetch('http://localhost:8080/api/item', {
 				method: 'POST',
@@ -48,8 +50,8 @@ const ItemsUser = () => {
 				body: JSON.stringify({
 					itemName: itemName,
 					itemDescription: itemDesc,
-					itemPicture: itemImg
-					//,dateLost: timeLost
+					itemPicture: itemImg,
+					dateLost: newTimeFounds
 				})
 			});
 			const responseData = await response.json();
