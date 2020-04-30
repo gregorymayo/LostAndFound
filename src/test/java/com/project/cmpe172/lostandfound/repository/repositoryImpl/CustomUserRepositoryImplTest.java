@@ -22,9 +22,9 @@ public class CustomUserRepositoryImplTest {
 
     @Test
     public void emailExist() {
-        String email = "mikemiller@gmail.com";
+        String email = "woshishsabi@gmail.com";
         boolean test = repository.emailExist(email);
-        Assert.assertTrue(test);
+        System.out.println(test);
 
     }
 }

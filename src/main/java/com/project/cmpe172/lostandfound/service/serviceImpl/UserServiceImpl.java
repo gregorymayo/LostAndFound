@@ -4,8 +4,6 @@ import com.project.cmpe172.lostandfound.dto.LoginDto;
 import com.project.cmpe172.lostandfound.dto.ReturnLoginDto;
 import com.project.cmpe172.lostandfound.dto.SignUpDto;
 import com.project.cmpe172.lostandfound.entity.User;
-import com.project.cmpe172.lostandfound.enums.ResultEnum;
-import com.project.cmpe172.lostandfound.exception.LostFoundException;
 import com.project.cmpe172.lostandfound.repository.CustomUserRepository;
 import com.project.cmpe172.lostandfound.repository.UserRepository;
 import com.project.cmpe172.lostandfound.service.ApiResponse;
@@ -32,15 +30,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public ApiResponse signUp(SignUpDto signUpDto) {
         String email = signUpDto.getUserEmail();
-        if (customUserRepository.emailExist(email)) {
+        if (userRepository.findByUserEmail(email) != null) {
             return new ApiResponse(500, "Email has already been registered", null);
+        } else {
+            User user = new User();
+            BeanUtils.copyProperties(signUpDto, user);
+            userRepository.save(user);
+            return new ApiResponse(200, "success", user);
         }
-
-//        validateSignUp(signUpDto);
-        User user = new User();
-        BeanUtils.copyProperties(signUpDto, user);
-        userRepository.save(user);
-        return new ApiResponse(200, "success", user);
     }
 
     @Override
@@ -48,10 +45,10 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUserEmail(loginDto.getUserEmail());
 
         if (user == null) {
-            throw new LostFoundException(ResultEnum.USER_NOT_FOUND);
+            return new ApiResponse(500, "Cannot find user", null);
         }
         if (!user.getPassword().equals(loginDto.getPassword())) {
-            throw new LostFoundException(ResultEnum.WRONG_PASSWORD);
+            return new ApiResponse(500, "Password does not match", null);
         }
         ReturnLoginDto returnLoginDto = new ReturnLoginDto();
         returnLoginDto.setUserEmail(user.getUserEmail());
