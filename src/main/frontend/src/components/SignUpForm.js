@@ -45,12 +45,6 @@ const SignUpForm = () => {
 		console.log(password);
 		console.log(admin);
 		*/
-		/*
-		//GET Method
-		const res = await fetch('http://localhost:8080/api/items');
-		const resData = await res.json();
-		console.log(resData);
-		*/
 		if (name !== '' && email !== '' && password !== '') {
 			//Post to DB
 			const response = await fetch('http://localhost:8080/user', {
@@ -61,8 +55,8 @@ const SignUpForm = () => {
 			const resData = await response.json();
 			//console.log(resData);
 			if (resData.status != 500) {
-				//console.log(responseData.result.userIsAdmin);
-				history.push('/admins');
+				if (resData.result.userIsAdmin) history.push(`/admins?uid=${resData.result.userIsAdmin}`);
+				else history.push(`/users?uid=${resData.result.userIsAdmin}`);
 			}
 		}
 	};

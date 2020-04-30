@@ -5,7 +5,6 @@
 }
 
 .navbarTitle {
-	padding-left: 20px;
 	color: #b2e5ff;
 }
 
@@ -19,4 +18,9 @@
 
 .nav-color-text {
 	color: #b2e5ff;
+}
+
+.button-color {
+	background: #3f5474;
+	border-color: #3f5474;
 }

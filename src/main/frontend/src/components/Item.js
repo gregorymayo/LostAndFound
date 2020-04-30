@@ -1,37 +1,62 @@
 import React, { useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import Navbar from './Navbar';
 import './Item.css';
 
 const ItemsUser = () => {
 	const [ itemName, setItemName ] = useState('');
 	const [ itemDesc, setItemDesc ] = useState('');
-	const [ itemImg, setItemImg ] = useState(
-		'https://securecdn.pymnts.com/wp-content/uploads/2019/09/Tile-Google-Assistant-Integration.jpg'
-	);
-
+	const [ itemImg, setItemImg ] = useState(' https://i.ibb.co/k1FKC1D/28xp-lost-article-Large.jpg');
+	const history = useHistory();
 	const handleChange = e => {
 		e.preventDefault();
 		if (e.target.id === 'itemName') setItemName(e.target.value);
 		if (e.target.id === 'itemDesc') setItemDesc(e.target.value);
-		if (e.target.id === 'imageUpload') setItemImg(URL.createObjectURL(e.target.files[0]));
+		if (e.target.id === 'imageUpload') setItemImg(e.target.value);
 		// if(e.target.id === "itemName")
 		// 	setItemName(e.target.value);
 	};
+	//Function for getting the unique id
+	const useQuery = () => {
+		return new URLSearchParams(useLocation().search);
+	};
+	let query = useQuery();
 
 	const onSubmit = async e => {
 		e.preventDefault();
+		/*
 		console.log(itemName);
 		console.log(itemDesc);
 		console.log(itemImg);
-
-		//Post to DB
-		const response = await fetch('http://localhost:8080/api/item', {
-			method: 'POST',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-			body: JSON.stringify({ itemName: itemName, itemDescription: itemDesc, itemImg: itemImg })
-		});
-		const responseData = await response.json();
-		console.log(responseData);
+		*/
+		if (itemName !== '' && itemDesc !== '' && itemImg !== '') {
+			let uniqueID = query.get('uid');
+			//console.log(uniqueID);
+			const timestamp = Date.now(); // This would be the timestamp you want to format
+			const timeLost = new Intl.DateTimeFormat('en-US', {
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+				hour: '2-digit',
+				minute: '2-digit',
+				second: '2-digit'
+			}).format(timestamp);
+			//Post to DB
+			const response = await fetch('http://localhost:8080/api/item', {
+				method: 'POST',
+				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					itemName: itemName,
+					itemDescription: itemDesc,
+					itemPicture: itemImg
+					//,dateLost: timeLost
+				})
+			});
+			const responseData = await response.json();
+			//console.log(responseData);
+			if (uniqueID === 'true') history.push(`/admins?uid=${uniqueID}`);
+			else history.push(`/users?uid=${uniqueID}`);
+		}
 	};
 
 	return (
@@ -68,12 +93,12 @@ const ItemsUser = () => {
 						<div className='form-group'>
 							<label>Upload Image</label>
 							<input
-								type='file'
+								type='text'
 								className='form-control-file'
 								id='imageUpload'
 								onChange={event => handleChange(event)}
 							/>
-							<p>Only upload .JPEG, .JPG, .PNG type file</p>
+							<p>For example: https://i.ibb.co/k1FKC1D/28xp-lost-article-Large.jpg</p>
 						</div>
 						<button className='item-btn-submit' onClick={onSubmit}>
 							Post Item

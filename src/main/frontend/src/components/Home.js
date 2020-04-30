@@ -40,9 +40,9 @@ const Home = () => {
 		});
 		const responseData = await response.json();
 		//console.log(responseData.status);
-		if (responseData.status != 500) {
-			//console.log(responseData.result.userIsAdmin);
-			history.push('/admins');
+		if (responseData.status !== 500) {
+			if (responseData.result.userIsAdmin) history.push(`/admins?uid=${responseData.result.userIsAdmin}`);
+			else history.push(`/users?uid=${responseData.result.userIsAdmin}`);
 		}
 	};
 	return (
