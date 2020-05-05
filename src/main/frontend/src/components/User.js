@@ -17,12 +17,12 @@ const Users = () => {
 		//console.log(resData);
 		setAnswers(resData);
 	};
-	/*
+
 	useEffect(() => {
 		getData();
 	}, []);
-	*/
-	getData();
+
+	//getData();
 	//Calling the database
 	const foundItem = async (itemId, e) => {
 		e.preventDefault();
