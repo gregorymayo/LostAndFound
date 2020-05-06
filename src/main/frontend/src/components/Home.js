@@ -33,7 +33,7 @@ const Home = () => {
 		//console.log(email);
 		//console.log(password);
 		//Post to DB
-		const response = await fetch('http://localhost:8080/user/login', {
+		const response = await fetch('https://lost-and-found-backend.herokuapp.com/user/login', {
 			method: 'POST',
 			headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 			body: JSON.stringify({ userEmail: email, password: password })

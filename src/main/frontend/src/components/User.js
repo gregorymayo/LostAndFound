@@ -12,7 +12,7 @@ const Users = () => {
 	//Calling the database
 	const getData = async () => {
 		//GET Method
-		const res = await fetch('http://localhost:8080/api/items');
+		const res = await fetch('https://lost-and-found-backend.herokuapp.com/api/items');
 		const resData = await res.json();
 		//console.log(resData);
 		setAnswers(resData);
@@ -39,7 +39,7 @@ const Users = () => {
 		var newTimeFounds = newTimeFound.replace('/', '-');
 		//console.log(newTimeFounds);
 		//Post to DB
-		const url = `http://localhost:8080/api/item/${itemId}/${newTimeFounds}`;
+		const url = `https://lost-and-found-backend.herokuapp.com/api/item/${itemId}/${newTimeFounds}`;
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
