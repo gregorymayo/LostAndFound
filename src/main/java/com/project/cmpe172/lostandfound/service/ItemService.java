@@ -20,7 +20,7 @@ public interface ItemService {
     List<Item> getAllItems();
 
     //post the date found of an item
-    void postDateFound(Integer itemId, String dateFoun);
+    void postDateFound(Integer itemId, String dateFound);
 
     //return found date for an item
     String dateFound(Integer itemId);
