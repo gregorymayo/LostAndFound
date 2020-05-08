@@ -41,15 +41,17 @@ const ItemsUser = () => {
 				minute: '2-digit',
 				second: '2-digit'
 			}).format(timestamp);
+			var newTimeFound = timeLost.replace('/', '-');
+			var newTimeFounds = newTimeFound.replace('/', '-');
 			//Post to DB
-			const response = await fetch('http://localhost:8080/api/item', {
+			const response = await fetch('https://lost-and-found-backend.herokuapp.com/api/item', {
 				method: 'POST',
 				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					itemName: itemName,
 					itemDescription: itemDesc,
-					itemPicture: itemImg
-					//,dateLost: timeLost
+					itemPicture: itemImg,
+					dateLost: newTimeFounds
 				})
 			});
 			const responseData = await response.json();

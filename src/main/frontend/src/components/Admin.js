@@ -11,17 +11,17 @@ const Admins = () => {
 	//Calling the database
 	const getData = async () => {
 		//GET Method
-		const res = await fetch('http://localhost:8080/api/items');
+		const res = await fetch('https://lost-and-found-backend.herokuapp.com/api/items');
 		const resData = await res.json();
 		//console.log(resData);
 		setAnswers(resData);
 	};
-	/*
+
 	useEffect(() => {
 		getData();
 	}, []);
-	*/
-	getData();
+
+	//getData();
 	//Calling the database
 	const foundItem = async (itemId, e) => {
 		e.preventDefault();
@@ -34,13 +34,16 @@ const Admins = () => {
 			minute: '2-digit',
 			second: '2-digit'
 		}).format(timestamp);
+		var newTimeFound = timeFound.replace('/', '-');
+		var newTimeFounds = newTimeFound.replace('/', '-');
+		//console.log(timeFound);
 		//Post to DB
-		const url = `http://localhost:8080/api/item/${itemId}`;
+		const url = `https://lost-and-found-backend.herokuapp.com/api/item/${itemId}/${newTimeFounds}`;
 		const response = await fetch(url, {
 			method: 'POST',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
 		});
-		const resDataFound = await response.json();
+		//const resDataFound = await response.json();
 		//console.log(resDataFound);
 	};
 
@@ -48,12 +51,12 @@ const Admins = () => {
 	const deleteItem = async (itemId, e) => {
 		e.preventDefault();
 		//Post to DB
-		const response = await fetch(`http://localhost:8080/api/item/${itemId}`, {
+		const response = await fetch(`https://lost-and-found-backend.herokuapp.com/api/item/${itemId}`, {
 			method: 'DELETE',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
 		});
-		const resData = await response.json();
-		console.log(resData);
+		//const resData = await response.json();
+		//console.log(resData);
 	};
 	return (
 		<div>

@@ -12,17 +12,17 @@ const Users = () => {
 	//Calling the database
 	const getData = async () => {
 		//GET Method
-		const res = await fetch('http://localhost:8080/api/items');
+		const res = await fetch('https://lost-and-found-backend.herokuapp.com/api/items');
 		const resData = await res.json();
 		//console.log(resData);
 		setAnswers(resData);
 	};
-	/*
+
 	useEffect(() => {
 		getData();
 	}, []);
-	*/
-	getData();
+
+	//getData();
 	//Calling the database
 	const foundItem = async (itemId, e) => {
 		e.preventDefault();
@@ -35,14 +35,16 @@ const Users = () => {
 			minute: '2-digit',
 			second: '2-digit'
 		}).format(timestamp);
+		var newTimeFound = timeFound.replace('/', '-');
+		var newTimeFounds = newTimeFound.replace('/', '-');
+		//console.log(newTimeFounds);
 		//Post to DB
-		//Post to DB
-		const url = `http://localhost:8080/api/item/${itemId}`;
+		const url = `https://lost-and-found-backend.herokuapp.com/api/item/${itemId}/${newTimeFounds}`;
 		const response = await fetch(url, {
 			method: 'POST',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json', Accept: 'application/json' }
 		});
-		const resDataFound = await response.json();
+		//const resDataFound = await response.json();
 		//console.log(resDataFound);
 	};
 	return (

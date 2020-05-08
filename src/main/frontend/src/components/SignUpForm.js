@@ -47,7 +47,7 @@ const SignUpForm = () => {
 		*/
 		if (name !== '' && email !== '' && password !== '') {
 			//Post to DB
-			const response = await fetch('http://localhost:8080/user', {
+			const response = await fetch('https://lost-and-found-backend.herokuapp.com/user', {
 				method: 'POST',
 				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 				body: JSON.stringify({ userFullname: name, password: password, userEmail: email, userIsAdmin: admin })
