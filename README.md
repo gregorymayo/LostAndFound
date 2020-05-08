@@ -14,9 +14,18 @@
 
 ### Table of Content
 
-[TOC]
+  * [1. Project Introduction](#1-project-introduction)
+  * [2. Sample Demo Screen Shots:](#2-sample-demo-screen-shots-)
+  * [3. Pre-requisites:](#3-pre-requisites-)
+  * [4. UML Diagrams](#4-uml-diagrams)
+  * [5. Schema](#5-schema)
+  * [6. Database Queries](#6-database-queries)
+  * [7. Midtier APIs](#7-midtier-apis)
+  * [9. UI data transport](#9-ui-data-transport)
 
 
+
+<a name="1-project-introduction"></a>
 
 ## 1. Project Introduction
 
@@ -24,7 +33,7 @@ Everyone always has that moment when they forget their essential belongings and 
 
 Lost and Found is a web application that allows the user to post their lost items and find their lost personal belongings in the area. It is a class project that we hope to solve problems on a daily basis and implement different kinds of new technologies that we learned from the class such as ReactJS, Maven, Spring Boot, AWS RDS and Docker. 
 
-
+<a name="2-sample-demo-screen-shots-"></a>
 
 ----
 
@@ -35,6 +44,8 @@ Lost and Found is a web application that allows the user to post their lost item
 **(To be added)**
 
 
+
+<a name="3-pre-requisites-">
 
 ----
 
@@ -92,7 +103,7 @@ localhost:3000
 
 
 
-
+<a name="4-uml-diagrams">
 
 ## 4. UML Diagrams
 
@@ -108,13 +119,13 @@ localhost:3000
 
 
 
-
+<a name="5-schema">
 
 ## 5. Schema
 
+![image-20200508004635847](C:\Users\Jimmy\AppData\Roaming\Typora\typora-user-images\image-20200508004635847.png)
 
-
-![img](https://lh4.googleusercontent.com/Yr71nS7hv3QFHXuckgPWOrfGnQDxGCb6EuRUTvGvb9GTwakfciWqSoCxcEgysE7rLBvbIJP7YNG-BcI-aVpW1hqiQ3OjAAViCzrVbopSLJ-b6z5mozurRxofVf3nY2Z4uFAge2LgFzk)
+<a name="6-database-queries">
 
 ## 6. Database Queries
 
@@ -122,7 +133,7 @@ localhost:3000
 
 
 
-
+<a name="7-midtier-apis">
 
 ## 7. Midtier APIs
 
@@ -153,7 +164,7 @@ localhost:3000
 
 
 
-
+<a name="9-ui-data-transport">
 
 ## 9. UI data transport
 
