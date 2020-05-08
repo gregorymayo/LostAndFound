@@ -112,9 +112,9 @@ localhost:3000
 
 ## 5. Schema
 
-![image-20200508004635847](C:\Users\Jimmy\AppData\Roaming\Typora\typora-user-images\image-20200508004635847.png)
 
 
+![img](https://lh4.googleusercontent.com/Yr71nS7hv3QFHXuckgPWOrfGnQDxGCb6EuRUTvGvb9GTwakfciWqSoCxcEgysE7rLBvbIJP7YNG-BcI-aVpW1hqiQ3OjAAViCzrVbopSLJ-b6z5mozurRxofVf3nY2Z4uFAge2LgFzk)
 
 ## 6. Database Queries
 
