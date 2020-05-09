@@ -113,7 +113,13 @@ localhost:3000
 
 * Sequence Diagram
 
-(To be added by Jiawei)
+Login :
+
+![img](https://lh6.googleusercontent.com/ED5dz9kObIW9B3eq9wEWS2FpZyMEjmN3Bcr8RAzydNaS1yUwmldtXE2euLmrHYV7x8boD6EjQOhj1VEEHwLfhY-525wxcK80s6oQSJHIvsAqX6AlhXYMjbYClHzCi1D5JYZrPMawx5Y)
+
+Item :
+
+![img](https://lh5.googleusercontent.com/8pz7ZMqgeluRgEcwvdTbWGCETAKXBVEBn72FINJNstkFoNNUK_oTioHL4SJSRZxfrj7ow2d3wIrtCMDkEecd_3o04JElfTaSBtUhzgCXpVGynooyAaASAp9W021Gws1NWtm9ZuuiAOI)
 
 
 
