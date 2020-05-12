@@ -39,10 +39,25 @@ Lost and Found is a web application that allows the user to post their lost item
 
 ## 2. Sample Demo Screen Shots:
 
+* Sign In Page
 
+![img](https://i.ibb.co/zxFnjZB/Screen-Shot-2020-05-12-at-2-42-19-PM.png)
 
-**(To be added)**
+* Sign Un Page
 
+![img](https://i.ibb.co/4d15zxF/Screen-Shot-2020-05-12-at-2-42-29-PM.png)
+
+* Post Item Page
+
+![img](https://i.ibb.co/G3LWHDY/Screen-Shot-2020-05-12-at-2-44-09-PM.png)
+
+* Regular User Page
+
+![img](https://i.ibb.co/bdGyCZX/image.png)
+
+* Admin User Page
+
+![img](https://i.ibb.co/KsBSVYF/image.png)
 
 
 <a name="3-pre-requisites-">
