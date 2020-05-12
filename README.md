@@ -72,6 +72,7 @@ Lost and Found is a web application that allows the user to post their lost item
 * Maven
 * MySQL
 * Node.js
+* Docker
 
 
 
@@ -112,7 +113,40 @@ Frontend is now running on
 localhost:3000
 ```
 
+*How to run the application using Docker*
 
+In /LostAndFound project directory. Open terminal and run the following command. 
+
+```
+docker build -f Dockerfile -t docker-spring-boot .
+```
+
+
+
+After build is success, run the following command.
+
+```
+docker run -p 8085:8085 docker-spring-boot
+```
+
+
+In /src/main/frontend directory, run the following command 
+
+```
+docker build -f Dockerfile -t docker-react-app .
+```
+
+After build is success, run the following command.
+
+```
+docker run \-it \--rm \-v ${PWD}:/app \-v /app/node_modules \-p 3000:3000 \-e CHOKIDAR_USEPOLLING=true \docker-react-app
+```
+
+Frontend is now running on 
+
+```
+localhost:3000
+```
 
 ---
 
@@ -219,7 +253,18 @@ Item :
       }
   ]
   ```
+  
+ * Frontend :
+ 
+  ```
+  const getData = async () => {
+		  //GET Method
+		  const res = await fetch('https://lost-and-found-backend.herokuapp.com/api/items');
+		  const resData = await res.json();
+		  console.log(resData);
+	};
 
+  ```
   
 
 * Item: @GetMapping("api/item/{itemId}")
@@ -244,7 +289,22 @@ Item :
   	"itemPicture": "http://xxxxx.jpg"
   }
   ```
-
+* Frontend:
+  ```
+	 const response = await fetch('https://lost-and-found-backend.herokuapp.com/api/item', {
+				method: 'POST',
+				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					itemName: itemName,
+					itemDescription: itemDesc,
+					itemPicture: itemImg,
+					dateLost: newTimeFounds
+				})
+			});
+			const responseData = await response.json();
+   console.log(responseData);
+	 };
+  ```
   
 
 * User : @PostMapping("/usuer")
@@ -256,6 +316,17 @@ Item :
   	"userEmail" : "mikemiller@gmail.com"
   }
   ```
+* Frontend:
+  ```
+	 const response = await fetch('https://lost-and-found-backend.herokuapp.com/user', {
+				method: 'POST',
+				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+				body: JSON.stringify({ userFullname: name, password: password, userEmail: email, userIsAdmin: admin })
+			});
+			const resData = await response.json();
+   console.log(resData);
+	 };
+  ```
 
 * User : @PostMapping("/user/login")
 
@@ -265,5 +336,15 @@ Item :
   	"userEmail" : "mikemiller@gmail.com"
   }
   ```
-
+* Frontend:
+  ```
+	 const response = await fetch('https://lost-and-found-backend.herokuapp.com/user/login', {
+			method: 'POST',
+			headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+			body: JSON.stringify({ userEmail: email, password: password })
+		});
+		const responseData = await response.json();
+  console.log(responseData);
+	 };
+  ```
   
