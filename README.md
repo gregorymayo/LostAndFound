@@ -258,11 +258,11 @@ Item :
  
   ```
   const getData = async () => {
-		  //GET Method
-		  const res = await fetch('https://lost-and-found-backend.herokuapp.com/api/items');
-		  const resData = await res.json();
-		  console.log(resData);
-	};
+	//GET Method
+	const res = await fetch('https://lost-and-found-backend.herokuapp.com/api/items');
+	const resData = await res.json();
+	console.log(resData);
+  };
 
   ```
   
@@ -291,19 +291,19 @@ Item :
   ```
 * Frontend:
   ```
-	 const response = await fetch('https://lost-and-found-backend.herokuapp.com/api/item', {
-				method: 'POST',
-				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					itemName: itemName,
-					itemDescription: itemDesc,
-					itemPicture: itemImg,
-					dateLost: newTimeFounds
-				})
-			});
-			const responseData = await response.json();
-   console.log(responseData);
-	 };
+  const response = await fetch('https://lost-and-found-backend.herokuapp.com/api/item', {
+	method: 'POST',
+	headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+	body: JSON.stringify({
+		itemName: itemName,
+		itemDescription: itemDesc,
+		itemPicture: itemImg,
+		dateLost: newTimeFounds
+		})
+	});
+	const responseData = await response.json();
+	console.log(responseData);
+  };
   ```
   
 
@@ -318,14 +318,14 @@ Item :
   ```
 * Frontend:
   ```
-	 const response = await fetch('https://lost-and-found-backend.herokuapp.com/user', {
-				method: 'POST',
-				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-				body: JSON.stringify({ userFullname: name, password: password, userEmail: email, userIsAdmin: admin })
-			});
-			const resData = await response.json();
-   console.log(resData);
-	 };
+  const response = await fetch('https://lost-and-found-backend.herokuapp.com/user', {
+	method: 'POST',
+	headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+	body: JSON.stringify({ userFullname: name, password: password, userEmail: email, userIsAdmin: admin })
+	});
+	const resData = await response.json();
+	console.log(resData);
+  };
   ```
 
 * User : @PostMapping("/user/login")
@@ -338,13 +338,13 @@ Item :
   ```
 * Frontend:
   ```
-	 const response = await fetch('https://lost-and-found-backend.herokuapp.com/user/login', {
-			method: 'POST',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-			body: JSON.stringify({ userEmail: email, password: password })
-		});
-		const responseData = await response.json();
-  console.log(responseData);
-	 };
+  const response = await fetch('https://lost-and-found-backend.herokuapp.com/user/login', {
+	method: 'POST',
+	headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+	body: JSON.stringify({ userEmail: email, password: password })
+	});
+ 	const responseData = await response.json();
+	console.log(responseData);
+	};
   ```
   
